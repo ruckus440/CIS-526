@@ -5,7 +5,9 @@
  */
 
 
-document.body.onload = addElement;
+ 
+
+/*document.body.onload = addElement;
 const container = document.getElementById("container");
 
 
@@ -17,12 +19,12 @@ function addElement () {
         var standardDiv = document.createElement("div");
         standardDiv.className = "stdItem";
                 
-        /*var iDiv = document.createElement('div');
+        var iDiv = document.createElement('div');
         iDiv.className = "column one";
         var i = document.createElement('p');
         i.innerHTML= element.identifier;
         iDiv.appendChild(i);
-        standardDiv.appendChild(iDiv);*/
+        standardDiv.appendChild(iDiv);
 
         var iDiv = document.createElement('div');
         iDiv.id = "columnone"
@@ -62,8 +64,29 @@ function addElement () {
         currentDiv.appendChild(standardDiv);
 
     });
+}*/
+
+document.body.onload = addElement;
+const container = document.getElementById("container");
+ 
+ 
+ 
+function addElement () {
+    
+ 
+    standards.forEach(element => {
+        var standardDiv = document.createElement("div");
+        standardDiv.className = "stdItem";
+ 
+        Object.keys(element).forEach(key => {
+            var newDiv = document.createElement('div')
+            newDiv.className = key
+            newDiv.innerHTML = element[key]
+            standardDiv.appendChild(newDiv)
+            
+        })
+                
+        var currentDiv = document.getElementById("stdDiv");
+        currentDiv.appendChild(standardDiv);
+    });
 }
-
-
-
-
