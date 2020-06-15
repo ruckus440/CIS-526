@@ -71,8 +71,7 @@ const container = document.getElementById("container");
  
  
  
-function addElement () {
-    
+function addElement () {    
  
     standards.forEach(element => {
         var standardDiv = document.createElement("div");
@@ -85,8 +84,25 @@ function addElement () {
             standardDiv.appendChild(newDiv)
             
         })
-                
+
         var currentDiv = document.getElementById("stdDiv");
         currentDiv.appendChild(standardDiv);
+
+        var expand = document.createElement("div");
+        expand.className = "expander";
+        var button = document.createElement("button");
+        button.className = "collapsible";
+        button.innerHTML = "more...";
+        
+        button.addEventListener('click', function(button) {
+            this.classList.toggle('active');
+        } )
+
+
+
+        expand.appendChild(button);
+        currentDiv.appendChild(expand);
     });
+
+    
 }
