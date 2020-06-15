@@ -25,7 +25,7 @@ function addElement () {
         standardDiv.appendChild(iDiv);*/
 
         var iDiv = document.createElement('div');
-        iDiv.className = "column one"
+        iDiv.id = "columnone"
         var i = document.createElement('p');
         i.innerHTML = element.identifier;
         iDiv.appendChild(i);
