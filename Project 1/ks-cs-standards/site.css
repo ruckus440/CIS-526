@@ -4,10 +4,6 @@
  * your code needs to accomplish.
  */
 
-#stdDiv {
-    
-}
-
 .stdItem {
     display: flex;
     flex-direction: row;
@@ -20,10 +16,6 @@
     background-color: lightgray;
     min-height: 10px;
 }
-
-
-
-
 
 .identifier {
     width: 10vw;
@@ -61,6 +53,8 @@
 
     .stdItem {
         min-height: 50px;
+        outline: 1px solid gray;
+        margin: 0 1px 1px 0;
     }
 
     .stdItem div {
@@ -73,23 +67,26 @@
 
     .identifier {
         background-color: lightgray;
-        width: 90px;
+        width: 85px;
         border-right: 1px solid gray;
     }
 
     .statement {
         background-color: lightgray;
-        width: calc(100% - 90px);
+        width: calc(100% - 98px);
+        float: right;
     }
 
     .description, .subconcept, .practices {
         display: none;
     }
 
-    
+    .description {
+        color: lightslategray;
+    }
 
     .collapsible {
-        width: 100vw;
+        width: 100%;
         text-align: left;
         color: lightslategray;
         background-color: white;
@@ -101,20 +98,17 @@
         content: "more...";
     }
 
-    
-
     .collapsible.active:before {
         content: "less...";
-        visibility: visible;     
-
-                
+        visibility: visible;                
     }
 
     .show {
         display: flex;
+        width: 100%;
+        outline: 1px solid gray;
+        margin: 0 1px 1px 0;
     }
-
-    
 }
 
 

@@ -5,14 +5,9 @@
  */
 
 document.body.onload = addElement;
-const container = document.getElementById("container"); 
 
+function addElement () {
 
- 
- 
-function addElement () {    
-    var x = 1;
- 
     standards.forEach(element => {
         var standardDiv = document.createElement("div");
         standardDiv.className = "stdItem";
@@ -25,62 +20,42 @@ function addElement () {
                 newDiv.classList.add("hideable");
             }
             standardDiv.appendChild(newDiv);
-            
-            
         })
 
         var currentDiv = document.getElementById("stdDiv");
         currentDiv.appendChild(standardDiv);
 
-        
         var button = document.createElement("button");
         button.className = "collapsible";
-
         button.onclick = function() { ToggleShow(button); };
 
-        
-        
-        standardDiv.appendChild(button);
-        x++;
-    });  
-
-    
+        standardDiv.appendChild(button);        
+    });
 
     getButtons();
-    
-    
 }
 
 
 
 function ToggleShow(button) {
+
     var parent = button.parentElement;
     var divs = parent.querySelectorAll('.hideable');
 
     divs.forEach(function(item) {
         item.classList.toggle('show');
     })
-
-    
-
-    console.log(parent);
-    console.log(divs);
-
-    console.log('hi');
-
 }
 
 function getButtons() {
+    
     var buttons = document.querySelectorAll('.collapsible');
-    var x = 1;
 
     buttons.forEach(function(button) {
         button.addEventListener('click', function() {
             this.classList.toggle('active');
-        });
-        
+        });        
     });
-
 }
 
 
