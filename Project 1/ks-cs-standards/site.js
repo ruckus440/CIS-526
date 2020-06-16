@@ -4,74 +4,14 @@
  * your code needs to accomplish.
  */
 
-
- 
-
-/*document.body.onload = addElement;
-const container = document.getElementById("container");
-
-
-
-function addElement () {
-    
-
-    standards.forEach(element => {
-        var standardDiv = document.createElement("div");
-        standardDiv.className = "stdItem";
-                
-        var iDiv = document.createElement('div');
-        iDiv.className = "column one";
-        var i = document.createElement('p');
-        i.innerHTML= element.identifier;
-        iDiv.appendChild(i);
-        standardDiv.appendChild(iDiv);
-
-        var iDiv = document.createElement('div');
-        iDiv.id = "columnone"
-        var i = document.createElement('p');
-        i.innerHTML = element.identifier;
-        iDiv.appendChild(i);
-        standardDiv.appendChild(iDiv);
-
-
-        var sDiv = document.createElement('div');
-        sDiv.className = "column two"
-
-        var s = document.createElement('p');
-        s.innerHTML = element.statement;
-        sDiv.appendChild(s);
-
-        var d = document.createElement('p');
-        d.innerHTML = element.description;
-        sDiv.appendChild(d);
-
-
-
-        var sc = document.createElement('p');
-        sc.textContent = element.subconcept;
-        sc.className = "column three";
-
-        var p = document.createElement('p');
-        p.textContent = element.practices
-        p.className = "column four"
-
-        standardDiv.appendChild(d);
-        standardDiv.appendChild(sc);
-        standardDiv.appendChild(p);
-
-
-        var currentDiv = document.getElementById("stdDiv");
-        currentDiv.appendChild(standardDiv);
-
-    });
-}*/
-
 document.body.onload = addElement;
-const container = document.getElementById("container");
- 
+const container = document.getElementById("container"); 
+
+
  
  
 function addElement () {    
+    var x = 1;
  
     standards.forEach(element => {
         var standardDiv = document.createElement("div");
@@ -81,28 +21,66 @@ function addElement () {
             var newDiv = document.createElement('div')
             newDiv.className = key
             newDiv.innerHTML = element[key]
-            standardDiv.appendChild(newDiv)
+            if (key == 'description' || key == 'subconcept' || key == 'practices'){
+                newDiv.classList.add("hideable");
+            }
+            standardDiv.appendChild(newDiv);
+            
             
         })
 
         var currentDiv = document.getElementById("stdDiv");
         currentDiv.appendChild(standardDiv);
 
-        var expand = document.createElement("div");
-        expand.className = "expander";
+        
         var button = document.createElement("button");
         button.className = "collapsible";
-        button.innerHTML = "more...";
+
+        button.onclick = function() { ToggleShow(button); };
+
         
-        button.addEventListener('click', function(button) {
-            this.classList.toggle('active');
-        } )
-
-
-
-        expand.appendChild(button);
-        currentDiv.appendChild(expand);
-    });
+        
+        standardDiv.appendChild(button);
+        x++;
+    });  
 
     
+
+    getButtons();
+    
+    
 }
+
+
+
+function ToggleShow(button) {
+    var parent = button.parentElement;
+    var divs = parent.querySelectorAll('.hideable');
+
+    divs.forEach(function(item) {
+        item.classList.toggle('show');
+    })
+
+    
+
+    console.log(parent);
+    console.log(divs);
+
+    console.log('hi');
+
+}
+
+function getButtons() {
+    var buttons = document.querySelectorAll('.collapsible');
+    var x = 1;
+
+    buttons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            this.classList.toggle('active');
+        });
+        
+    });
+
+}
+
+

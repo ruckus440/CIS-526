@@ -13,6 +13,7 @@
     flex-direction: row;
     min-height: 100px;
     word-wrap: break-word;   
+    flex-wrap: wrap;
 }
 
 #banner {
@@ -20,10 +21,9 @@
     min-height: 10px;
 }
 
-.stdItem div {
-    border: 2px solid lightgray;
-    padding: 5px;
-}
+
+
+
 
 .identifier {
     width: 10vw;
@@ -46,10 +46,15 @@
 }
 
 @media (min-width: 700px) {
-    .expander {
+    .collapsible {
         display: none;
         width: 0vw;
     }    
+
+    .stdItem div {
+        border: 2px solid lightgray;
+        padding: 5px;
+    }
 }
 
 @media (max-width: 700px) {
@@ -60,6 +65,7 @@
 
     .stdItem div {
         font-size: smaller;
+        padding: 3px;
     }
     #banner {
         display: none;
@@ -67,41 +73,48 @@
 
     .identifier {
         background-color: lightgray;
-        width: 20vw;
+        width: 90px;
+        border-right: 1px solid gray;
     }
 
     .statement {
         background-color: lightgray;
-        width: 80vw;
+        width: calc(100% - 90px);
     }
 
-    .description {
+    .description, .subconcept, .practices {
         display: none;
     }
 
-    .subconcept {
-        display: none;
-    }
-
-    .practices {
-        display: none;
-    }
-
-    .expander {
-        width: 100vw;
-    }
+    
 
     .collapsible {
         width: 100vw;
         text-align: left;
         color: lightslategray;
         background-color: white;
-
+        visibility: hidden;
     }
 
-    .active {
-        content: 'less...';
+    .collapsible:before {
+        visibility: visible;
+        content: "more...";
     }
+
+    
+
+    .collapsible.active:before {
+        content: "less...";
+        visibility: visible;     
+
+                
+    }
+
+    .show {
+        display: flex;
+    }
+
+    
 }
 
 
